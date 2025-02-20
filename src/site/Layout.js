@@ -6,7 +6,7 @@ function Layout() {
     return (
         <>
             <Header />
-            <main className="p-4 bg-gray-50">
+            <main className="w-screen mx-0 px-0 bg-gray-50">
                 <Outlet />
             </main>
             <Footer />

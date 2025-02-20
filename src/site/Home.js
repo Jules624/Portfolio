@@ -1,8 +1,10 @@
+import { useEffect, useRef } from "react";
+import Carousel from "../components/Carousel";
+
 export default function Home() {
     return (
-        <div>
-            <h1>Home</h1>
-            <p>Welcome to the home page</p>
+        <div className="w-screen max-w-none mx-0 px-0">
+            <Carousel />
         </div>
     );
 }

@@ -16,6 +16,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 🔥 Ajout pour fixer le problème d'espace sur les côtés */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Empêche tout débordement horizontal */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
