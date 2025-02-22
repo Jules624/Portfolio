@@ -39,7 +39,7 @@ function Carousel() {
     return (
         <div
             style={{ opacity: isVisible, transition: "opacity 500ms ease-in-out" }}
-            className="w-screen h-[400px] md:h-[700px] relative overflow-hidden mx-0 px-0"
+            className="w-screen h-[calc(100vh-64px)] relative overflow-hidden mx-0 px-0"
         >
             <div className="absolute inset-0 bg-black bg-opacity-60 z-20"></div>  {/* Overlay sombre pour le texte */}
 
