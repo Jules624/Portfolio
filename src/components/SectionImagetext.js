@@ -1,6 +1,6 @@
-export default function Section({ title, subtitle, text, image, reverse = false }) {
+export default function SectionImageTexte({ title, subtitle, text, image, reverse = false }) {
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 px-6">
+        <div className="flex justify-center items-center min-h-screen px-6">
             <div className={`flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""} items-center gap-24 max-w-6xl w-full`}>
                 
                 {/* Texte */}

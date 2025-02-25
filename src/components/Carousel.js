@@ -55,9 +55,9 @@ function Carousel() {
             ))}
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center md:justify-start md:text-left w-full md:w-1/2 md:right-0 md:left-auto md:px-10 top-1/2 transform -translate-y-1/2 z-30">
-                <h1 className="text-white text-[15px] md:text-[15px] font-bold uppercase tracking-[4px] opacity-0 animate-fadeInUp [animation-delay:0ms]">Menuiserie La Belle Grume</h1>
-                <h2 className="text-zinc-400 text-[30px] md:text-[35px] font-bold mt-2 uppercase opacity-0 animate-fadeInUp [animation-delay:300ms]">Agenceur sur-mesure en IDF</h2>
-                <p className="text-zinc-300 text-[15px] md:text-[15px] mt-2 opacity-0 animate-fadeInUp [animation-delay:600ms]">De l’étude à la réalisation, nous vous accompagnons dans les moindres détails </p>
+                <h1 className="text-white text-[15px] md:text-[15px] font-bold uppercase tracking-[4px] opacity-0 animate-fadeInUp [animation-delay:0ms]">Lorem ipsum dolor sit.</h1>
+                <h2 className="text-zinc-400 text-[30px] md:text-[35px] font-bold mt-2 uppercase opacity-0 animate-fadeInUp [animation-delay:300ms]">Lorem ipsum dolor sit amet, consectetur.</h2>
+                <p className="text-zinc-300 text-[15px] md:text-[15px] mt-2 opacity-0 animate-fadeInUp [animation-delay:600ms]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur scelerisque ante. Proin commodo gravida.  </p>
 
                 <div className="relative inline-block p-4 group">
                     <Link
