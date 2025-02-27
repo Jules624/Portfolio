@@ -11,7 +11,13 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:3000', 'http://13.48.160.132'],
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization'
+};
+
+app.use(cors(corsOptions));
 
 app.post('/api/contact', async (req, res) => {
     console.log(req.body);
