@@ -11,10 +11,12 @@ const PORT = process.env.PORT || 3003;
 const corsOptions = {
     origin: ['http://localhost:3000', 'http://13.48.160.132'],
     methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-};
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 204 // Évite les erreurs liées aux réponses vides
 
+};
 app.use(cors(corsOptions));
+
 app.options('*', cors(corsOptions)); // 🔥 Autoriser les pré-requêtes OPTIONS
 
 // 🛠️ Middleware pour JSON et logs
