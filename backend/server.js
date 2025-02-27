@@ -12,12 +12,10 @@ const corsOptions = {
     origin: ['http://localhost:3000', 'http://13.48.160.132'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    optionsSuccessStatus: 204 // Évite les erreurs liées aux réponses vides
-
+    optionsSuccessStatus: 204
 };
 app.use(cors(corsOptions));
-
-app.options('*', cors(corsOptions)); // 🔥 Autoriser les pré-requêtes OPTIONS
+app.options('*', cors(corsOptions)); // 🔥 Autoriser toutes les pré-requêtes OPTIONS
 
 // 🛠️ Middleware pour JSON et logs
 app.use(express.json());
@@ -33,7 +31,14 @@ app.post('/api/contact', async (req, res) => {
     
     const { nom, prenom, telephone, budget, projet, message } = req.body;
     if (!nom || !prenom || !telephone || !budget || !projet || !message) {
+        console.warn("⚠️ Champs manquants !");
         return res.status(400).json({ error: "Tous les champs sont requis." });
+    }
+
+    // Vérification des variables d'environnement
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS || !process.env.GMAIL_RECEIVER) {
+        console.error("❌ Erreur: Variables d'environnement manquantes !");
+        return res.status(500).json({ error: "Problème de configuration du serveur." });
     }
 
     try {
