@@ -54,8 +54,8 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // ✅ Déplacé en dehors de `app.post()`
-app.listen(PORT, () => {
-    console.log(`✅ Serveur backend lancé sur http://localhost:${PORT}`);
-});
-
+app.listen(3003, '0.0.0.0', () => {
+    console.log('Server is running on port 3003');
+  });
+  
 
