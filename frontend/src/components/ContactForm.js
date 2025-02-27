@@ -12,9 +12,9 @@ const ContactForm = () => {
 
     const [status, setStatus] = useState("");
     const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false); // ✅ Nouvel état pour désactiver le bouton
 
     const API_URL = process.env.REACT_APP_API_URL || "http://13.48.160.132:3003"; // ✅ Variable d'environnement
+    console.log(process.env.REACT_APP_API_URL)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +25,6 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus("");
-        setLoading(true); // ✅ Désactiver le bouton pendant l'envoi
 
         let formErrors = {};
         if (!formData.nom) formErrors.nom = "Veuillez remplir ce champ.";
@@ -33,7 +32,6 @@ const ContactForm = () => {
 
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
-            setLoading(false);
             return;
         }
 
@@ -61,101 +59,109 @@ const ContactForm = () => {
         } catch (error) {
             setStatus("❌ Erreur réseau, veuillez réessayer.");
         } finally {
-            setLoading(false); // ✅ Réactiver le bouton après la requête
         }
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 px-6 py-12">
-            <div className="max-w-3xl w-full bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Contactez-nous</h2>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 md:px-20 md:pb-20 md:pt-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 w-full max-w-4xl bg-white shadow-lg md:rounded-lg overflow-hidden">
+                {/* Colonne de gauche - Infos de contact */}
+                <div className="bg-slate-900 text-white p-8 space-y-6 md:col-span-1">
+                    <h2 className="text-3xl font-semibold">Contactez-nous</h2>
+                    <p className="text-gray-200">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae rhoncus nulla. Morbi vitae vestibulum neque. Cras blandit est et mauris dignissim faucibus. Sed tempor ex ligula, id commodo neque consequat non. Nulla lacinia libero ut tellus vulputate eleifend. Ut ut cursus metus. 
+                    </p>
+                    <div>
+                        <ul className="space-y-5">
+                            <li>📍 Av. Gustave Eiffel, 75007 Paris </li>
+                            <li>📞 01 92 70 12 39</li>
+                            <li>🕒 24/7</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Colonne de droite - Formulaire */}
+                <div className="space-y-6 p-8 md:col-span-2">
+                    <form onSubmit={handleSubmit}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label htmlFor="nom" className="block text-sm text-gray-700 font-bold uppercase">Nom</label>
+                                <input
+                                    type="text"
+                                    name="nom"
+                                    value={formData.nom}
+                                    onChange={handleChange}
+                                    className={`mt-1 block w-full px-4 py-2 border ${errors.nom ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                />
+                                {errors.nom && <p className="text-red-500 text-xs mt-1">{errors.nom}</p>}
+                            </div>
+                            <div>
+                                <label htmlFor="prenom" className="block text-sm text-gray-700 uppercase font-bold">Prénom</label>
+                                <input
+                                    type="text"
+                                    name="prenom"
+                                    value={formData.prenom}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                />
+                            </div>
+                        </div>
+                        <div className="h-6"></div>  {/*saut de ligne*/}
                         <div>
-                            <label className="block text-sm font-bold uppercase text-gray-700">Nom</label>
+                            <label htmlFor="telephone" className="block text-sm text-gray-700 font-bold uppercase">Numéro de téléphone</label>
+                            <input
+                                type="tel"
+                                name="telephone"
+                                value={formData.telephone}
+                                onChange={handleChange}
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                        <div className="h-6"></div> 
+                        <div>
+                            <label htmlFor="projet" className="block text-sm text-gray-700 font-bold uppercase">Projet</label>
                             <input
                                 type="text"
-                                name="nom"
-                                value={formData.nom}
+                                name="projet"
+                                value={formData.projet}
                                 onChange={handleChange}
-                                className={`mt-1 block w-full px-4 py-2 border ${errors.nom ? "border-red-500" : "border-gray-300"} rounded-md`}
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             />
-                            {errors.nom && <p className="text-red-500 text-xs mt-1">{errors.nom}</p>}
                         </div>
+                        <div className="h-6"></div>
                         <div>
-                            <label className="block text-sm font-bold uppercase text-gray-700">Prénom</label>
+                            <label htmlFor="budget" className="block text-sm text-gray-700 font-bold uppercase">Budget</label>
                             <input
                                 type="text"
-                                name="prenom"
-                                value={formData.prenom}
+                                name="budget"
+                                value={formData.budget}
                                 onChange={handleChange}
-                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             />
                         </div>
+                        <div className="h-6"></div>
+                        <div>
+                            <label htmlFor="message" className="block text-sm text-gray-700 font-bold uppercase">Votre message</label>
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                rows="5"
+                            />
+                        </div>
+                        <div className="h-10"></div>
+                        <div>
+                            <button
+                                type="submit"
+                                className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 focus:outline-none"
+                            >
+                                Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                    <div className="text-center text-gray-700 mt-4">{status}</div>
                     </div>
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-bold uppercase text-gray-700">Téléphone</label>
-                        <input
-                            type="tel"
-                            name="telephone"
-                            value={formData.telephone}
-                            onChange={handleChange}
-                            className={`mt-1 block w-full px-4 py-2 border ${errors.telephone ? "border-red-500" : "border-gray-300"} rounded-md`}
-                        />
-                        {errors.telephone && <p className="text-red-500 text-xs mt-1">{errors.telephone}</p>}
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-bold uppercase text-gray-700">Projet</label>
-                        <input
-                            type="text"
-                            name="projet"
-                            value={formData.projet}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-bold uppercase text-gray-700">Budget</label>
-                        <input
-                            type="text"
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-bold uppercase text-gray-700">Votre message</label>
-                        <textarea
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md"
-                            rows="4"
-                        />
-                    </div>
-
-                    <div className="mt-6">
-                        <button
-                            type="submit"
-                            className="w-full py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 disabled:bg-gray-400"
-                            disabled={loading} // ✅ Désactiver le bouton pendant l'envoi
-                        >
-                            {loading ? "Envoi en cours..." : "Envoyer le message"}
-                        </button>
-                    </div>
-                </form>
-
-                {status && (
-                    <div className="text-center mt-4 text-gray-700">
-                        {status}
-                    </div>
-                )}
             </div>
         </div>
     );
