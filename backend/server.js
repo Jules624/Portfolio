@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3003;
 
 app.use(express.json());
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://13.48.160.132'],
-    methods: 'GET,POST',
+    origin: ['http://localhost:3000', 'http://13.48.160.132', 'http://13.48.160.132:3003'], // Ajout du port 3003
+    methods: 'GET,POST,OPTIONS', // Ajout de la méthode OPTIONS
     allowedHeaders: 'Content-Type,Authorization'
 };
 
@@ -56,6 +56,6 @@ app.post('/api/contact', async (req, res) => {
 // ✅ Déplacé en dehors de `app.post()`
 app.listen(3003, '0.0.0.0', () => {
     console.log('Server is running on port 3003');
-  });
-  
+});
+
 
