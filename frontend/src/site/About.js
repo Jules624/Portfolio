@@ -1,5 +1,11 @@
-function About() {
-    return <h1>À propos</h1>
-}
+import { useEffect } from "react";
 
-export default About;
+export default function About() {
+    useEffect(() => {
+        document.title = "A propos | Mon Site";
+    }, []);
+
+    return (
+        <h1>A propos</h1>
+    );
+}

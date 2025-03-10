@@ -11,7 +11,7 @@ function Header() {
             <nav className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 mt-3 md:mt-0">
                 <Link to="/" className={`block ${location.pathname === '/' ? 'underline font-bold' : ''} hover:underline text-sm md:text-[15px] font-inter uppercase`} >Accueil</Link>
                 <Link to="/about" className={`block ${location.pathname === '/about' ? 'underline font-bold' : ''} hover:underline text-sm md:text-[15px] font-inter uppercase`} >A propos</Link>
-                <Link to="/services" className={`block ${location.pathname === '/services' ? 'underline font-bold' : ''} hover:underline text-sm md:text-[15px] font-inter uppercase`} >Services</Link>
+                <Link to="/boutique" className={`block ${location.pathname === '/boutique' ? 'underline font-bold' : ''} hover:underline text-sm md:text-[15px] font-inter uppercase`} >Boutique</Link>
                 <Link to="/contact" className={`block ${location.pathname === '/contact' ? 'underline font-bold' : ''} hover:underline text-sm md:text-[15px] font-inter uppercase`} >Contact</Link>
             </nav>
         </header>

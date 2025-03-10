@@ -4,7 +4,13 @@ import GoogleReviewsCarousel from "../components/GoogleReviewsCarousel";
 import Video from "../components/Video"
 import SectionText from "../components/SectionText";
 
+import { useEffect } from "react";
+
 export default function Home() {
+    useEffect(() => {
+        document.title = "Accueil | Mon Site";
+    }, []);
+
     return (
         <div className="bg-gray-100 w-screen max-w-none mx-0 px-0">
             <Carousel />

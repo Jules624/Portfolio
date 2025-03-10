@@ -3,7 +3,7 @@ import Layout from './site/Layout';
 import Home from './site/Home';
 import About from './site/About';
 import Contact from './site/Contact';
-import Services from './site/Services';
+import Boutique from './site/Boutique';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="services" element={<Services />} />
+          <Route path="boutique" element={<Boutique />} />
         </Route>
       </Routes>
     </BrowserRouter>
